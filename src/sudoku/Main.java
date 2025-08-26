@@ -16,6 +16,7 @@ public class Main {
             }
         }
 
+        board.generateRandomFixedNumbers(25);
         SwingUtilities.invokeLater(() -> new SudokuGUI(board));
     }
 }

@@ -2,6 +2,8 @@ package sudoku;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Random;
+
 
 public class SudokuBoard {
     private SudokuCell[][] board = new SudokuCell[9][9];
@@ -70,4 +72,25 @@ public class SudokuBoard {
         }
         return false;
     }
+
+    public void generateRandomFixedNumbers(int count) {
+        Random rand = new Random();
+        int filled = 0;
+        while (filled < count) {
+            int row = rand.nextInt(9);
+            int col = rand.nextInt(9);
+            int val = rand.nextInt(9) + 1;
+            SudokuCell cell = board[row][col];
+            if (cell.getValue() == 0) {
+                cell.setValue(val);
+                if (!hasErrors()) {
+                    cell.setFixed(true);
+                    filled++;
+                } else {
+                    cell.setValue(0);
+                }
+            }
+        }
+    }
+
 }
