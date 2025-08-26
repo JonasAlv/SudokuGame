@@ -9,3 +9,5 @@ java -cp out sudoku.Main
 ```
 
 or download .jar file from Releases
+
+we need java 21+
